@@ -17,35 +17,4 @@
                         q
                         (- count 1)))))
 
-
-
-(display (fib 0)) ; => 0
-(display "\n")
-(display (fib 1)) ; => 1
-(display "\n")
-(display (fib 2)) ; => 1
-(display "\n")
-(display (fib 3)) ; => 2
-(display "\n")
-(display (fib 4)) ; => 3
-(display "\n")
-(display (fib 5)) ; => 5
-(display "\n")
-(display (fib 6)) ; => 8
-(display "\n")
-(display (fib 7)) ; => 13
-(display "\n")
-(display (fib 8)) ; => 21
-(display "\n")
-(display (fib 9)) ; => 34
-(display "\n")
-(display (fib 10)) ; => 55
-(display "\n")
-(display (fib 11)) ; => 21
-(display "\n")
-(display (fib 12)) ; => 21
-(display "\n")
-(display (fib 13)) ; => 21
-(display "\n")
-(display (fib 14)) ; => 21
-(display (fib 1000000)) ; => 21
+(display (fib 5000000)) ; => 21
