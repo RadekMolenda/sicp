@@ -17,4 +17,4 @@
                         q
                         (- count 1)))))
 
-(display (fib 5000000)) ; => 21
+(display (fib 10000000)) ; => 21
