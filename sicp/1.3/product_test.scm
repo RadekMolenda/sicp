@@ -16,5 +16,9 @@
 (check-expect (producti identity 1 inc 4) 24)
 (check-expect (producti identity 1 inc-by-two 4) 3)
 
+(check-expect (factorial 5) 120)
+(check-expect (factorial 1) 1)
+
+(check-within (* 4 (pi/4 1000)) 3.14 0.01)
 
 (test)
