@@ -1,7 +1,18 @@
 #lang scheme
 
 (provide filtered-accumulate
-         sum-prime-squares)
+         sum-prime-squares
+         relative-primes-product
+         relative-primes?)
+
+
+(define (gcd a b)
+  (if (= b 0)
+    a
+    (gcd b (remainder a b))))
+
+(define (relative-primes? a b)
+  (= (gcd a b) 1))
 
 (define (square x) (* x x))
 
@@ -44,3 +55,8 @@
 
 (define (sum-prime-squares a b)
   (filtered-accumulate prime? + 0 (lambda (x) (* x x)) a (lambda (x) (+ x 1)) b))
+
+(define (relative-primes-product n)
+  (define (rel-prime? x)
+    (relative-primes? x n))
+  (filtered-accumulate rel-prime? * 1 (lambda (x) x) 1 (lambda (x) (+ x 1)) n))

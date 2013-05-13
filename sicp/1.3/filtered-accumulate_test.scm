@@ -10,4 +10,11 @@
 (check-expect (sum-prime-squares 3 7) (+ 9 25 49))
 (check-expect (sum-prime-squares 3 9) (+ 9 25 49))
 
+(check-expect (relative-primes? 3 7) #t)
+(check-expect (relative-primes? 7 18) #t)
+(check-expect (relative-primes? 6 18) #f)
+
+(check-expect (relative-primes-product 5) 24)
+(check-expect (relative-primes-product 6) 5)
+(check-expect (relative-primes-product 7) 720)
 (test)
