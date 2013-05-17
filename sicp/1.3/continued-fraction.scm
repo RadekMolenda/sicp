@@ -8,13 +8,13 @@
     (if (= a k)
       (/ (n a) (d a))
       (let ((next (+ a 1)))
-        (/ (n next) (+ (d next) (y next))))))
+        (/ (n a) (+ (d a) (y next))))))
   (y 1))
 
 (define (cont-frac-i n d k)
   (define (y a acc)
-    (if (= a k)
+    (if (= a 0)
       acc
-      (let ((next (+ a 1)))
-        (y next (/ (n next) (+ (d next) acc))))))
-  (y 1 (/ (n k) (d k))))
+      (let ((next (- a 1)))
+        (y next (/ (n a) (+ (d a) acc))))))
+  (y k (/ (n k) (d k))))
