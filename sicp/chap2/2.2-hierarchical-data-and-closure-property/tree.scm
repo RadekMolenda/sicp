@@ -12,16 +12,16 @@
          total-weight
          balanced?)
 
-(define (list-with-two-elements l r) (list l r))
+(define (list-with-two-elements l r) (cons l r))
 
 (define make-mobile list-with-two-elements)
 (define make-branch list-with-two-elements)
 
 (define (left-branch mobile) (car mobile))
-(define (right-branch mobile) (car (cdr mobile)))
+(define (right-branch mobile) (cdr mobile))
 
 (define (branch-length branch) (car branch))
-(define (branch-structure branch) (car (cdr branch)))
+(define (branch-structure branch) (cdr branch))
 
 (define (fringe tree)
   (cond ((null? tree) tree)
