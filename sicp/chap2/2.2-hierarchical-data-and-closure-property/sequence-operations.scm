@@ -11,7 +11,10 @@
          map*
          matrix-*-vector
          transpose
-         matrix-*-matrix)
+         matrix-*-matrix
+         foldl
+         reversel
+         reverser)
 
 (define (accumulate op initial sequence)
   (if (null? sequence)
@@ -68,3 +71,19 @@
 (define (matrix-*-matrix m n)
   (let ((cols (transpose n)))
     (map (lambda (coll) (matrix-*-vector cols coll)) m)))
+
+(define (foldl op initial sequence)
+  (define (iter result rest)
+    (if (null? rest)
+      result
+      (iter (op result (car rest))
+            (cdr rest))))
+  (iter initial sequence))
+
+(define foldr accumulate)
+
+(define (reversel seq)
+  (foldl (lambda (x y) (cons y x)) '() seq))
+
+(define (reverser seq)
+  (foldr (lambda (x y) (append y (list x))) '() seq))

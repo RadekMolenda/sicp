@@ -28,4 +28,7 @@
 
 (check-expect (matrix-*-matrix '((1 2 3) (4 5 6)) '((7 8) (9 10) (11 12))) '((58 64) (139 154)))
 
+(check-expect (reversel '(1 2 3)) '(3 2 1))
+(check-expect (reverser '(1 2 3)) '(3 2 1))
+
 (test)
