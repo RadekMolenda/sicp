@@ -1,6 +1,7 @@
 #lang racket
 
-(provide map
+(provide accumulate
+         map
          append
          length
          horner-eval
