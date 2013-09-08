@@ -7,7 +7,10 @@
          prime-sum?
          flatmap
          prime-sum-pairs
-         perms)
+         perms
+         unique-pairs
+         sums-to?
+         unique-triplets)
 
 
 (define (enumerate-interval s n)
@@ -29,11 +32,8 @@
 (define (prime-sum-pairs n)
   (map make-pair-sum
        (filter prime-sum?
-               (flatmap
-                 (lambda (i)
-                   (map (lambda (j) (list i j))
-                        (enumerate-interval 1 (- i 1))))
-                 (enumerate-interval 1 n)))))
+               (unique-pairs n))))
+
 
 (define (rem item sequence)
   (filter (lambda (x) (not (= x item)))
@@ -47,3 +47,31 @@
                     (perms (rem x s))))
              s)))
 
+(define (unique-pairs n)
+  (flatmap
+    (lambda (i)
+      (map (lambda (j) (list i j))
+           (enumerate-interval 1 (- i 1))))
+    (enumerate-interval 1 n)))
+
+(define (unique-triplets n)
+  (flatmap
+    (lambda (i)
+      (flatmap
+        (lambda (j)
+          (map (lambda (k) (list i j k))
+               (enumerate-interval 1 (- j 1))))
+        (enumerate-interval 1 (- i 1))))
+    (enumerate-interval 1 n)))
+
+(define (sums-to? s xs)
+  (if (null? xs)
+    #f
+    (= s (accumulate + 0 xs))))
+
+(define (find-triplets s n)
+  (define sums-to-s?
+    (lambda (xs)
+      (sums-to? s xs)))
+  (filter sums-to-s?
+          (unique-triplets n)))
